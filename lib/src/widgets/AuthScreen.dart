@@ -1,7 +1,8 @@
+// Kioshi Okamoto Rojas
 import 'package:flutter/material.dart';
 
-class FirstScreen extends StatelessWidget {
-  const FirstScreen({super.key});
+class AuthScreen extends StatelessWidget {
+  const AuthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class FirstScreen extends StatelessWidget {
               "Tu app de notas siempre disponible",
             ),
             ElevatedButton(
-              // Within the `FirstScreen` widget
+              // Within the `AuthScreen` widget
               onPressed: () {
                 // Navigate to the second screen using a named route.
                 Navigator.pushNamed(context, '/login');
@@ -39,7 +40,7 @@ class FirstScreen extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              // Within the `FirstScreen` widget
+              // Within the `AuthScreen` widget
               onPressed: () {
                 // Navigate to the second screen using a named route.
                 Navigator.pushNamed(context, '/register');
