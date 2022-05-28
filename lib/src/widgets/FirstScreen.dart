@@ -6,31 +6,49 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFE1B3FE),
       body: SafeArea(
           child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ElevatedButton(
-              // Within the `FirstScreen` widget
-              onPressed: () {
-                // Navigate to the second screen using a named route.
-                Navigator.pushNamed(context, '/second');
-              },
-              child: const Text('To second screen'),
+            const Image(image: AssetImage('assets/niceMemoLogo.png')),
+            const Padding(
+                padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0)),
+            const Text(
+              "Nice Memo",
+              style: TextStyle(color: Colors.white, fontSize: 32),
+            ),
+            const Padding(
+                padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 0.0)),
+            const Text(
+              "Tu app de notas siempre disponible",
             ),
             ElevatedButton(
               // Within the `FirstScreen` widget
               onPressed: () {
                 // Navigate to the second screen using a named route.
-                Navigator.pushNamed(context, '/second');
+                Navigator.pushNamed(context, '/login');
               },
-              child: const Text('To third screen'),
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.deepPurple)),
+              child: Text(
+                'Iniciar sesión'.toUpperCase(),
+              ),
             ),
-            Container(
-              color: Colors.deepOrange,
-              width: 100.0,
-              height: 100.0,
-            )
+            ElevatedButton(
+              // Within the `FirstScreen` widget
+              onPressed: () {
+                // Navigate to the second screen using a named route.
+                Navigator.pushNamed(context, '/register');
+              },
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.deepPurple)),
+              child: Text('Registrarse'.toUpperCase()),
+            ),
           ],
         ),
       )),
