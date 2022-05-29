@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:nice_memo/src/widgets/Home.dart';
 import 'package:nice_memo/src/widgets/SecondScreen.dart';
 import 'package:nice_memo/src/widgets/LoginScreen.dart';
 import 'package:nice_memo/src/widgets/AuthScreen.dart';
@@ -15,6 +16,7 @@ void main() {
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const SecondScreen(),
+        '/home': (context) => const Home()
       },
     ),
   );

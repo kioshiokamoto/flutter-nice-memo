@@ -78,10 +78,9 @@ class LoginScreen extends StatelessWidget {
               child: ElevatedButton(
                   // Within the LoginScreen widget
                   onPressed: () {
-                    // Navigate back to the first screen by popping the current route
-                    // off the stack.
-                    Navigator.pop(context);
-                  },
+                    // Navigate to the home screen using a named route.
+                    Navigator.pushNamed(context, '/home');
+                  },  
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.deepPurple)),
