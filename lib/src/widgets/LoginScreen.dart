@@ -80,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {
                     // Navigate to the home screen using a named route.
                     Navigator.pushNamed(context, '/home');
-                  },  
+                  },
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.deepPurple)),
