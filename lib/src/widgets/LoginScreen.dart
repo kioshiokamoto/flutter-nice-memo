@@ -56,15 +56,16 @@ class LoginScreen extends State<LoginScreenForm> {
                         child: TextFormField(
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Por favor ingresa tu correo';
+                              return 'Por favor ingresa un correo válido';
                             }
                             if (value.length < 7) {
                               return 'La longitud del correo no es válida';
                             }
 
+                            //Validación de caracteres
                             bool emailValid = RegExp(
                                     r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                .hasMatch(value!);
+                                .hasMatch(value);
 
                             if (!emailValid) {
                               return 'Ingresa un mail valido';
@@ -90,6 +91,7 @@ class LoginScreen extends State<LoginScreenForm> {
                             horizontal: 4, vertical: 8),
                         child: TextFormField(
                           validator: (value) {
+                            //Validación de clave
                             if (value == null || value.isEmpty) {
                               return 'Por favor ingresa tu clave';
                             }
