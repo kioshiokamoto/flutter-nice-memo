@@ -1,8 +1,18 @@
 // Jesus Leon Chavez
 import 'package:flutter/material.dart';
 
-class SecondScreen extends StatelessWidget {
-  const SecondScreen({super.key});
+// Define a custom Form widget.
+class SecondScreenForm extends StatefulWidget {
+  const SecondScreenForm({super.key});
+
+  @override
+  SecondScreen createState() {
+    return SecondScreen();
+  }
+}
+
+class SecondScreen extends State<SecondScreenForm> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +24,7 @@ class SecondScreen extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          key: _formKey,
           children: [
             const Image(image: AssetImage('assets/niceMemoLogo.png')),
             const Padding(
@@ -38,6 +49,12 @@ class SecondScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                     child: TextFormField(
+                      validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor ingresa tu nombre';
+                            }
+                            return null;
+                          },
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.deepPurple),
                           border: const UnderlineInputBorder(),
@@ -55,6 +72,15 @@ class SecondScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                     child: TextFormField(
+                      validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor ingresa tu contraseña';
+                            }
+                            if (value.length < 7) {
+                              return 'La longitud minima es de 8 caracteres';
+                            }
+                            return null;
+                          },
                       obscureText: true,
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.deepPurple),
@@ -73,6 +99,15 @@ class SecondScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                     child: TextFormField(
+                      validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Por favor ingresa tu contraseña';
+                            }
+                            if (value.length < 7) {
+                              return 'La longitud minima es de 8 caracteres';
+                            }
+                            return null;
+                          },
                       obscureText: true,
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.deepPurple),
@@ -84,7 +119,7 @@ class SecondScreen extends StatelessWidget {
                           ),
                           fillColor: Colors.grey,
                           labelText: 'Contraseña',
-                          hintText: 'Ingresa tu contraseña'),
+                          hintText: 'Ingresa tu contraseña'),  
                     ),
                   ),
                 ],
@@ -95,11 +130,17 @@ class SecondScreen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: ElevatedButton(
                   // Within the LoginScreen widget
-                  onPressed: () {
-                    // Navigate back to the first screen by popping the current route
-                    // off the stack.
-                    Navigator.pop(context);
-                  },
+                   onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          // If the form is valid, display a snackbar. In the real world,
+                          // you'd often call a server or save the information in a database.
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Processing Data')),
+                          );
+                          Navigator.pushNamed(context, '/home');
+                        }
+                        // Navigate to the home screen using a named route.
+                      },
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.deepPurple)),
