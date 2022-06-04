@@ -14,7 +14,7 @@ void main() {
         // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => const AuthScreen(),
         // When navigating to the "/second" route, build the SecondScreen widget.
-        '/login': (context) => const LoginScreen(),
+        '/login': (context) => const LoginScreenForm(),
         '/register': (context) => const SecondScreen(),
         '/home': (context) => const Home()
       },
